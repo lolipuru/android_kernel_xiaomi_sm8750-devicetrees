@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 &reserved_memory {
@@ -67,6 +67,11 @@
 	chipinfo_mem: chipinfo_region@80c00000 {
 		no-map;
 		reg = <0x0 0x80c00000 0x0 0x1000>;
+	};
+
+	pvm_fw_mem: pvm_fw_region@80c01000 {
+		no-map;
+		reg = <0x0 0x80c01000 0x0 0x100000>;
 	};
 
 	wlan_fw_mem: wlan_fw_region@82a00000 {
