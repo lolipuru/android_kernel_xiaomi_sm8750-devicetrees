@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #include <dt-bindings/interrupt-controller/arm-gic.h>
@@ -215,16 +215,25 @@
 				};
 			};
 
-			test-dbl {
+			test-dbl-tuivm {
 				vdevice-type = "doorbell";
-				generate = "/hypervisor/test-dbl";
+				generate = "/hypervisor/test-dbl-tuivm";
 				qcom,label = <0x4>;
 				peer-default;
 			};
 
-			test-dbl-source {
+			test-dbl-tuivm-source {
 				vdevice-type = "doorbell-source";
-				generate = "/hypervisor/test-dbl-source";
+				generate = "/hypervisor/test-dbl-tuivm-source";
+				qcom,label = <0x4>;
+				peer-default;
+			};
+
+			test-msgq-tuivm {
+				vdevice-type = "message-queue-pair";
+				generate = "/hypervisor/test-msgq-tuivm-pair";
+				message-size = <0xf0>;
+				queue-depth = <0x8>;
 				qcom,label = <0x4>;
 				peer-default;
 			};
@@ -278,6 +287,13 @@
 		#interrupt-cells = <2>;
 		/* Valid pins */
 		gpios = /bits/ 16 <64 65 66 67 0 4 86 87 16 17 18 19 20 21>;
+	};
+
+	tlmm-vm-test {
+		compatible = "qcom,tlmm-vm-test";
+		tlmm-vm-gpio-list = <&tlmm 64 0 &tlmm 65 0 &tlmm 66 0 &tlmm 67 0 &tlmm 0 0
+				     &tlmm 4 0 &tlmm 86 0 &tlmm 87 0 &tlmm 16 0 &tlmm 17 0
+				     &tlmm 18 0 &tlmm 19 0 &tlmm 20 0 &tlmm 21 0>;
 	};
 
 	psci {
@@ -396,10 +412,17 @@
 		qcom,support-hypervisor;
 	};
 
-	qcom,test-dbl {
+	qcom,test-dbl-tuivm {
 		compatible = "qcom,gh-dbl";
 		qcom,label = <0x4>;
 	};
+
+	qcom,test-msgq-tuivm {
+		compatible = "qcom,gh-msgq-test";
+		gunyah-label = <0x4>;
+		affinity = <0>;
+	};
+
 };
 
 #include "waipio-vm-dma-heaps.dtsi"
