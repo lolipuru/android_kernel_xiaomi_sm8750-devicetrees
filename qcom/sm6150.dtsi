@@ -1022,6 +1022,16 @@
 		qcom,vmid-cp-camera-preview-ro;
 	};
 
+	qcom,mem-buf-msgq {
+		compatible = "qcom,mem-buf-msgq";
+	};
+
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,mem-buf-capabilities = "supplier";
+		qcom,vmid = <3>;
+	};
+
 	qcom_tzlog: tz-log@146aa720 {
 		compatible = "qcom,tz-log";
 		reg = <0x146aa720 0x3000>;
