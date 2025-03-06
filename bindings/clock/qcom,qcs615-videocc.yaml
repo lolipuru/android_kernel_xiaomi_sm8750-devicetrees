@@ -13,11 +13,16 @@ description: |
   Qualcomm video clock control module provides clocks, resets and power
   domains on QCS615 Qualcomm SoCs.
 
-  See also: include/dt-bindings/clock/qcom,qcs615-videocc.h
+  See also:
+    include/dt-bindings/clock/qcom,qcs615-videocc.h
+    include/dt-bindings/clock/qcom,videocc-sm6150.h
 
 properties:
   compatible:
-    const: qcom,qcs615-videocc
+    enum:
+      - qcom,qcs615-videocc
+      - qcom,sa6155-videocc
+      - qcom,sm6150-videocc
 
   reg:
     maxItems: 1

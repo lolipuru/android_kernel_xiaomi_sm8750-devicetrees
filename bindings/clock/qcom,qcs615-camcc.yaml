@@ -13,11 +13,16 @@ description: |
   Qualcomm camera clock control module provides the clocks, resets and power
   domains on QCS615
 
-  See also: include/dt-bindings/clock/qcom,qcs615-camcc.h
+  See also:
+    include/dt-bindings/clock/qcom,camcc-sm6150.h
+    include/dt-bindings/clock/qcom,qcs615-camcc.h
 
 properties:
   compatible:
-    const: qcom,qcs615-camcc
+    enum:
+      - qcom,qcs615-camcc
+      - qcom,sa6155-camcc
+      - qcom,sm6150-camcc
 
   reg:
     maxItems: 1
