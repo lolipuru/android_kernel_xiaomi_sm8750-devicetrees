@@ -48,3 +48,7 @@
 &L14A {
 	regulator-always-on;
 };
+
+&qupv3_se0_2uart {
+	status = "ok";
+};

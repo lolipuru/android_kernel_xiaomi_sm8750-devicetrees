@@ -1,0 +1,80 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ *Copyright (c) 2025, Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+&soc {
+	/*
+	 * QUPv3 North & South Instances
+	 * North 0 : SE 4
+	 * North 1 : SE 5
+	 * North 2 : SE 6
+	 * North 3 : SE 7
+	 * South 0 : SE 0
+	 * South 1 : SE 1
+	 * South 2 : SE 2
+	 * South 3 : SE 3
+	 */
+
+	qup0_gpi_iommu_region: qup0_gpi_iommu_region {
+		iommu-addresses =  <&gpi_dma0 0x0 0x100000>, <&gpi_dma0 0x200000 0xFFE00000>;
+	};
+
+	gpi_dma0: qcom,gpi-dma@800000 {
+		compatible = "qcom,gpi-dma";
+		#dma-cells = <5>;
+		reg= <0x800000 0x60000>;
+		reg-names = "gpi-top";
+		interrupts = <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 245 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 246 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,max-num-gpii = <8>;
+		qcom,gpii-mask = <0x0f>;
+		qcom,ev-factor = <2>;
+		iommus = <&apps_smmu 0x00d6 0x0>;
+		memory-region = <&qup0_gpi_iommu_region>;
+		status = "disabled";
+	};
+
+	qup0_se_iommu_region: qup0_se_iommu_region {
+		iommu-addresses =  <&qupv3_0 0x0 0x40000000>, <&qupv3_0 0x50000000 0xb0000000>;
+	};
+
+	qupv3_0: qcom,qupv3_0_geni_se@8c0000 {
+		compatible = "qcom,geni-se-qup";
+		reg = <0x8c0000 0x6000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		iommus = <&apps_smmu 0xc3 0x0>;
+		memory-region = <&qup0_se_iommu_region>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
+		qcom,iommu-dma = "fastmap";
+		clock-names = "m-ahb", "s-ahb";
+		clocks = <&gcc GCC_QUPV3_WRAP_0_M_AHB_CLK>,
+			<&gcc GCC_QUPV3_WRAP_0_S_AHB_CLK>;
+		ranges;
+		status = "ok";
+
+		qupv3_se0_2uart: qcom,qup_uart@880000 {
+			compatible = "qcom,geni-debug-uart";
+			reg = <0x880000 0x4000>;
+			reg-names = "se_phys";
+			interrupts = <GIC_SPI 601 IRQ_TYPE_LEVEL_HIGH>;
+			clock-names = "se";
+			clocks = <&gcc GCC_QUPV3_WRAP0_S0_CLK>;
+			interconnect-names = "qup-core", "qup-config", "qup-memory";
+			interconnects =
+				<&aggre1_noc MASTER_QUP_0 &mc_virt SLAVE_EBI1>,
+				<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_QUP_0>,
+				<&aggre1_noc MASTER_QUP_0 &mc_virt SLAVE_EBI1>;
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&qupv3_se0_2uart_active>;
+			pinctrl-1 = <&qupv3_se0_2uart_sleep>;
+			status = "disabled";
+		};
+	};
+};

@@ -38,6 +38,7 @@
 
 	aliases: aliases {
 		ufshc1 = &ufshc_mem; /* Embedded UFS slot */
+		serial0 = &qupv3_se0_2uart;
 	};
 
 	cpus {
@@ -1144,6 +1145,7 @@
 #include "sm6150-pinctrl.dtsi"
 #include "msm-rdbg.dtsi"
 #include "msm-arm-smmu-sm6150.dtsi"
+#include "sm6150-qupv3.dtsi"
 
 &tlmm {
 	status = "okay";
