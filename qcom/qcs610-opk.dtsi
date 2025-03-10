@@ -52,3 +52,27 @@
 &qupv3_se0_2uart {
 	status = "ok";
 };
+
+&tlmm {
+	usb_typea_host {
+		usb_typea_host_en: usb_typea_host_en {
+			mux {
+				pins = "gpio54";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio54";
+				drive-strength = <2>;
+				bias-disable;
+				output-high;
+			};
+		};
+	};
+};
+
+&usb1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb_typea_host_en>;
+	status = "okay";
+};
