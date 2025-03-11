@@ -97,6 +97,15 @@ properties:
       - qcom,sdxbaagha-pcie_anoc,
       - qcom,sdxbaagha-mem_noc,
       - qcom,sdxbaagha-system_noc,
+      - qcom,sm6150-aggre1_noc
+      - qcom,sm6150-camnoc_virt
+      - qcom,sm6150-config_noc
+      - qcom,sm6150-dc_noc
+      - qcom,sm6150-gem_noc
+      - qcom,sm6150-ipa_virt
+      - qcom,sm6150-mc_virt
+      - qcom,sm6150-mmss_noc
+      - qcom,sm6150-system_noc
       - qcom,sm8150-aggre1-noc
       - qcom,sm8150-aggre2-noc
       - qcom,sm8150-camnoc-noc
