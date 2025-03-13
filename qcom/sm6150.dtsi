@@ -39,6 +39,7 @@
 	aliases: aliases {
 		ufshc1 = &ufshc_mem; /* Embedded UFS slot */
 		serial0 = &qupv3_se0_2uart;
+		mmc0 = &sdhc_1; /* SDC1 eMMC slot */
 	};
 
 	cpus {
@@ -893,6 +894,85 @@
 
 		qos1 {
 			mask = <0x3f>;
+			vote = <67>;
+		};
+	};
+
+	sdhc1_opp_table: sdhc1-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <200000 150000>;
+			opp-avg-kBps = <104000 0>;
+		};
+
+		opp-384000000 {
+			opp-hz = /bits/ 64 <384000000>;
+			opp-peak-kBps = <2718822 1359411>;
+			opp-avg-kBps = <400000 0>;
+		};
+	};
+
+	sdhc_1: sdhci@7c4000 {
+		compatible = "qcom,sdhci-msm-v5";
+		reg = <0x7c4000 0x1000>, <0x7c5000 0x1000>, <0x7C8000 0x8000>;
+		reg-names = "hc", "cqhci", "cqhci_ice";
+
+		interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 644 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "hc_irq", "pwr_irq";
+
+		clocks = <&gcc GCC_SDCC1_AHB_CLK>,
+			<&gcc GCC_SDCC1_APPS_CLK>,
+			<&gcc GCC_SDCC1_ICE_CORE_CLK>;
+		clock-names = "iface", "core", "ice_core";
+
+		qcom,ice-clk-rates = <300000000 75000000>;
+
+		qcom,devfreq,freq-table = <50000000 200000000>;
+
+		bus-width = <8>;
+		qcom,restore-after-cx-collapse;
+		supports-cqe;
+
+		mmc-ddr-1_8v;
+		mmc-hs200-1_8v;
+		mmc-hs400-1_8v;
+		mmc-hs400-enhanced-strobe;
+		non-removable;
+
+		interconnects = <&aggre1_noc MASTER_SDCC_1 &mc_virt SLAVE_EBI1>,
+				<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_SDCC_1>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+
+		operating-points-v2 = <&sdhc1_opp_table>;
+		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+		qcom,dll-hsr-list = <0x000F642C 0x0 0x0 0x00010800 0x80040868>;
+		no-sd;
+		no-sdio;
+
+		iommus = <&apps_smmu 0x02C0 0x0>;
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
+
+		qcom,iommu-dma = "fastmap";
+		dma-coherent;
+
+		nvmem-cells = <&boot_config>;
+		nvmem-cell-names = "boot_conf";
+		boot_device_type = <0x0>;
+		qcom,ice-use-hwkm;
+
+		status = "disabled";
+
+		qos0 {
+			mask = <0x3f>;
+			vote = <67>;
+		};
+
+		qos1 {
+			mask = <0xc0>;
 			vote = <67>;
 		};
 	};

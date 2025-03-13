@@ -3,6 +3,8 @@
  * Copyright (c) 2025 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
+#include <dt-bindings/clock/qcom,gcc-sm6150.h>
+
 / {
 	model = "Qualcomm Technologies, Inc. QCS610 IOT";
 	compatible = "qcom,qcs610-iot", "qcom,qcs610", "qcom,iot";
@@ -118,4 +120,25 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&usb_typea_host_en>;
 	status = "disabled";
+};
+
+&sdhc_1 {
+	vdd-supply = <&pm6150l_l11>;
+	qcom,vdd-voltage-level = <2950000 2950000>;
+	qcom,vdd-current-level = <0 570000>;
+
+	vdd-io-supply = <&pm6150_l12>;
+	qcom,vdd-io-always-on;
+	qcom,vdd-io-lpm-sup;
+	qcom,vdd-io-voltage-level = <1800000 1800000>;
+	qcom,vdd-io-current-level = <0 325000>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc1_on>;
+	pinctrl-1 = <&sdc1_off>;
+
+	resets = <&gcc GCC_SDCC1_BCR>;
+	reset-names = "core_reset";
+
+	status = "ok";
 };
