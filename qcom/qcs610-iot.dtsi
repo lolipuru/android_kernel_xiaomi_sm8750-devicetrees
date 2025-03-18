@@ -15,6 +15,10 @@
 	status = "ok";
 };
 
+&qupv3_se7_4uart {
+	status = "ok";
+};
+
 &ufsphy_mem {
 	compatible = "qcom,ufs-phy-qmp-v3-660";
 
