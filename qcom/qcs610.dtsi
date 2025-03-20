@@ -4,6 +4,7 @@
  */
 
 #include "sm6150.dtsi"
+#include "sm6150-pmic-overlay.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. QCS610";
@@ -25,4 +26,25 @@
 		clock-names = "eud_ahb2phy_clk";
 		status = "ok";
 	};
+};
+
+&qupv3_se3_i2c {
+	status = "ok";
+	#include "smb1390.dtsi"
+};
+
+&smb1390 {
+	/delete-property/ interrupts;
+	interrupts = <0x0 0xc2 0x0 IRQ_TYPE_LEVEL_LOW>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&smb_stat_default>;
+	status = "ok";
+};
+
+&smb1390_charger {
+	/delete-property/ compatible;
+	compatible = "qcom,smb1390-charger-psy";
+	io-channels = <&pm6150_vadc ADC5_AMUX_THM3>;
+	io-channel-names = "cp_die_temp";
+	status = "ok";
 };
