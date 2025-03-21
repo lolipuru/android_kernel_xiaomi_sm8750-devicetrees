@@ -1204,6 +1204,26 @@
 		/* Outputs to turing */
 		qcom,smem-states = <&adsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		remoteproc_adsp_glink: glink-edge {
+			qcom,remote-pid = <2>;
+			transport = "smem";
+			mboxes = <&apss_shared 24>;
+			mbox-names = "adsp_smem";
+			interrupts = <GIC_SPI 170 IRQ_TYPE_EDGE_RISING>;
+
+			label = "adsp";
+			qcom,glink-label = "lpass";
+			cpu-affinity = <1 2>;
+
+			qcom,adsp_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+		};
 	};
 
 	cdsp_pas: remoteproc-cdsp@0x8300000 {
@@ -1243,6 +1263,25 @@
 		/* Outputs to turing */
 		qcom,smem-states = <&cdsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		remoteproc_cdsp_glink: glink-edge {
+			qcom,remote-pid = <5>;
+			transport = "smem";
+			mboxes = <&apss_shared 4>;
+			mbox-names = "cdsp_smem";
+			interrupts = <GIC_SPI 574 IRQ_TYPE_EDGE_RISING>;
+
+			label = "cdsp";
+			qcom,glink-label = "cdsp";
+
+			qcom,cdsp_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+		};
+
 	};
 
 	qcom,sps {
