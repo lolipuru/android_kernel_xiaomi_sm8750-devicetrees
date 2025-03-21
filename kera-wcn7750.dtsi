@@ -14,6 +14,34 @@
 			function = "wcn_sw_ctrl";
 		};
 	};
+
+	icnss_wlan_en_active: icnss_wlan_en_active {
+		mux {
+			pins = "gpio35";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio35";
+			drive-strength = <16>;
+			output-high;
+			bias-pull-up;
+		};
+	};
+
+	icnss_wlan_en_sleep: icnss_wlan_en_sleep {
+		mux {
+			pins = "gpio35";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio35";
+			drive-strength = <2>;
+			output-low;
+			bias-pull-down;
+		};
+	};
 };
 
 &soc {
@@ -70,9 +98,12 @@
 		sw-ctrl-gpio = <81>;
 		/* List of GPIOs to be setup for interrupt wakeup capable */
 		mpm_wake_set_gpios = <81>;
+		pin_wlan-en-gpio = <&tlmm 35 0>;
 		pin_sw-ctrl-gpio = <&tlmm 81 0>;
-		pinctrl-names = "sw_ctrl";
+		pinctrl-names = "sw_ctrl", "wlan_en_active", "wlan_en_sleep";
 		pinctrl-0 = <&icnss_sw_ctrl>;
+		pinctrl-1 = <&icnss_wlan_en_active>;
+		pinctrl-2 = <&icnss_wlan_en_sleep>;
 
 		interrupts = <GIC_SPI 768 IRQ_TYPE_EDGE_RISING>,
 			     <GIC_SPI 769 IRQ_TYPE_EDGE_RISING>,
