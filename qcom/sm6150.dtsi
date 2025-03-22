@@ -514,6 +514,8 @@
 		interrupt-controller;
 	};
 
+	msm_gpu: qcom,kgsl-3d0@5000000 { };
+
 	timer {
 		compatible = "arm,armv8-timer";
 		interrupts = <1 1 0xf08>,
