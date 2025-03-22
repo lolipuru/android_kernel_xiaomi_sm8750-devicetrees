@@ -769,6 +769,34 @@
 		interrupts = <GIC_PPI 5 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
+	qfprom: qfprom@780000 {
+		compatible = "qcom,qfprom";
+		reg = <0x780000 0x7000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		read-only;
+		ranges;
+
+		feat_id: feat_id@130 {
+			reg = <0x130 0x4>;
+		};
+
+		boot_config: boot_config@6070 {
+			reg = <0x6070 0x4>;
+		};
+
+		gpu_speed_bin: gpu_speed_bin@6004 {
+			reg = <0x6004 0x1>;
+			bits = <21 28>;
+		};
+	};
+
+	qfprom_sys: qfprom {
+		compatible = "qcom,qfprom-sys";
+		nvmem-cells = <&feat_id>;
+		nvmem-cell-names = "feat_id";
+	};
+
 	qcom_tzlog: tz-log@146aa720 {
 		compatible = "qcom,tz-log";
 		reg = <0x146aa720 0x3000>;
