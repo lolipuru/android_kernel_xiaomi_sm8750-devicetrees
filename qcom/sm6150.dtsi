@@ -86,6 +86,7 @@
 			dynamic-power-coefficient = <100>;
 			cache-size = <0x8000>;
 			next-level-cache = <&L2_100>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_100: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -105,6 +106,7 @@
 			dynamic-power-coefficient = <100>;
 			cache-size = <0x8000>;
 			next-level-cache = <&L2_200>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_200: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -123,6 +125,7 @@
 			dynamic-power-coefficient = <100>;
 			cache-size = <0x8000>;
 			next-level-cache = <&L2_300>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_300: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -141,6 +144,7 @@
 			dynamic-power-coefficient = <100>;
 			cache-size = <0x8000>;
 			next-level-cache = <&L2_400>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_400: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -159,6 +163,7 @@
 			dynamic-power-coefficient = <100>;
 			cache-size = <0x8000>;
 			next-level-cache = <&L2_500>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_500: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -196,6 +201,7 @@
 			dynamic-power-coefficient = <404>;
 			cache-size = <0x10000>;
 			next-level-cache = <&L2_700>;
+			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 1 2>;
 			L2_700: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -670,6 +676,9 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos", "disp";
 		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+	};
+
+	thermal_zones: thermal-zones {
 	};
 
 	gcc: clock-controller@100000 {
@@ -1430,6 +1439,7 @@
 
 #include "sm6150-regulator.dtsi"
 #include "sm6150-gdsc.dtsi"
+#include "sm6150-thermal.dtsi"
 #include "sm6150-pinctrl.dtsi"
 #include "msm-rdbg.dtsi"
 #include "msm-arm-smmu-sm6150.dtsi"
