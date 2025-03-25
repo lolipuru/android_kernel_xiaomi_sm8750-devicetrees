@@ -438,6 +438,54 @@
 		method = "smc";
 	};
 
+	slimbam_aud: bamdma@62d84000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0x62d84000 0x2a000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_aud: slim@62dc0000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0x62dc0000 0x2c000>;
+		reg-names = "ctrl";
+		interrupts = <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>;
+		dmas = <&slimbam_aud 3>, <&slimbam_aud 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
+
+	slimbam_qca: bamdma@62e04000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0x62e04000 0x20000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_qca: slim@62e40000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0x62e40000 0x2c000>;
+		reg-names = "ctrl";
+		interrupts = <GIC_SPI 291 IRQ_TYPE_LEVEL_HIGH>;
+		dmas = <&slimbam_qca 3>, <&slimbam_qca 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
+
 	apps_rsc: rsc@18200000 {
 		label = "apps_rsc";
 		compatible = "qcom,rpmh-rsc";
