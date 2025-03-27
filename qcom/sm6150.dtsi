@@ -1502,6 +1502,16 @@
 			#interrupt-cells = <2>;
 		};
 	};
+
+	sram@c3f0000 {
+		compatible = "qcom,rpmh-stats";
+		reg = <0x0c3f0000 0x400>;
+		ss-name = "modem", "adsp", "adsp_island", "cdsp", "apss";
+	};
+
+	qcom,power-state {
+		compatible = "qcom,power-state";
+	};
 };
 
 #include "sm6150-regulator.dtsi"
