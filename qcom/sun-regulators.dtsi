@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2023-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2023-2025 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
@@ -1489,4 +1489,16 @@
 			qcom,init-voltage = <3304000>;
 		};
 	};
+
+	rpmh-regulator-vrm-wcal {
+		compatible = "qcom,rpmh-pbs-regulator";
+		qcom,resource-name = "vrm.wcal";
+
+		WCAL_PBS:
+		pmk8550_wcal_pbs: regulator-pmk8550-wcal-pbs {
+			regulator-name = "pmk8550_wcal_pbs";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+		};
+	};
+
 };
