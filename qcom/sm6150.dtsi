@@ -852,6 +852,13 @@
 		#freq-domain-cells = <2>;
 	};
 
+	llcc: cache-controller@9200000 {
+		compatible = "qcom,sm6150-llcc";
+		reg = <0x9200000 0x50000>, <0x9600000 0x50000>;
+		reg-names = "llcc_base", "llcc_broadcast_or_base";
+		cap-based-alloc-and-pwr-collapse;
+	};
+
 	ufsphy_mem: ufsphy_mem@1d87000 {
 		reg = <0x1d87000 0xe00>; /* PHY regs */
 		reg-names = "phy_mem";
