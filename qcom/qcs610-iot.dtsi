@@ -263,6 +263,10 @@
 	status = "ok";
 };
 
+&pil_modem_mem {
+	reg = <0x0 0x8fd00000 0x0 0x3100000>;
+};
+
 &ufsphy_mem {
 	compatible = "qcom,ufs-phy-qmp-v3-660";
 
