@@ -65,6 +65,30 @@
 		/* Outputs to mss */
 		qcom,smem-states = <&modem_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		remoteproc_modem_glink: glink-edge {
+			qcom,remote-pid = <1>;
+			transport = "smem";
+			mboxes = <&apss_shared 12>;
+			mbox-names = "mpss_smem";
+			interrupts = <GIC_SPI 449 IRQ_TYPE_EDGE_RISING>;
+
+			label = "modem";
+			qcom,glink-label = "mpss";
+
+			qcom,modem_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,low-latency;
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+			qcom,modem_ds {
+				qcom,glink-channels = "DS";
+				qcom,intents = <0x4000 0x2>;
+			};
+		};
 	};
 
 };
