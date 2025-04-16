@@ -566,6 +566,54 @@
 					"l3-scu-errirq",
 					"l3-scu-faultirq";
 	};
+
+	tlmm: pinctrl@03000000 {
+		compatible = "qcom,sm6150-pinctrl";
+		reg = <0x03000000 0xdc2000>, <0x17c000f0 0x50>;
+		reg-names = "pinctrl", "spi_cfg";
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 210 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 211 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		qcom,gpios-reserved = <0 1 2 3 6 7 8 9>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		wakeup-parent = <&pdc>;
+	};
+
+	apcs: syscon@17c0000c {
+		compatible = "syscon";
+		reg = <0x17c0000c 0x4>;
+	};
+
+	tcsr_mutex_block: syscon@1f40000 {
+		compatible = "syscon";
+		reg = <0x1f40000 0x20000>;
+	};
+
+	tcsr_mutex: hwlock@1f40000 {
+		compatible = "qcom,tcsr-mutex";
+		syscon = <&tcsr_mutex_block 0 0x1000>;
+		#hwlock-cells = <1>;
+	};
+
+	smem: qcom,smem@8600000 {
+		compatible = "qcom,smem";
+		memory-region = <&smem_region>;
+		hwlocks = <&tcsr_mutex 3>;
+	};
 };
 
 #include "sm6150-regulator.dtsi"
+#include "sm6150-pinctrl.dtsi"
+
+&tlmm {
+	status = "okay";
+};

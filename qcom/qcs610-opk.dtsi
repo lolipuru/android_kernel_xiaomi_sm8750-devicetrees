@@ -12,3 +12,7 @@
 	compatible = "qcom,qcs610-iot", "qcom,qcs610", "qcom,iot";
 	qcom,board-id = <32 0>;
 };
+
+&tlmm {
+	qcom,gpios-reserved = <6 7 8 9>;
+};
