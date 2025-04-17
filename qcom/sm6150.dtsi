@@ -5,6 +5,7 @@
 
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. SM6150";
@@ -566,3 +567,5 @@
 					"l3-scu-faultirq";
 	};
 };
+
+#include "sm6150-regulator.dtsi"
