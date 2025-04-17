@@ -104,7 +104,7 @@
 		vdd-wlan-rfa2-supply = <&S7F>;
 		qcom,vdd-wlan-rfa2-config = <1352000 1400000 0 0 1>;
 		vdd-wlan-ant-share-supply = <&L3K>;
-		qcom,vdd-wlan-ant-share-config = <1200000 1200000 0 0 1>;
+		qcom,vdd-wlan-ant-share-config = <1200000 1200000 25 0 1>;
 		vdd-wlan-supply = <&S7G>;
 		qcom,vdd-wlan-config = <952000 1100000 0 0 1>;
 
