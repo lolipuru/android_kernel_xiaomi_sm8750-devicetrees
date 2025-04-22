@@ -1882,6 +1882,7 @@
 #include "sm6150-qupv3.dtsi"
 #include "sm6150-usb.dtsi"
 #include "sm6150-dma-heaps.dtsi"
+#include "sm6150-walt.dtsi"
 
 &tlmm {
 	status = "okay";
