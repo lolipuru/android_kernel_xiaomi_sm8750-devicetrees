@@ -588,6 +588,29 @@
 		wakeup-parent = <&pdc>;
 	};
 
+	apss_shared: mailbox@17c00000 {
+		compatible = "qcom,sm8150-apss-shared";
+		reg = <0x17c00000 0x1000>;
+		#mbox-cells = <1>;
+	};
+
+	aoss_qmp: power-controller@c300000 {
+		compatible = "qcom,aoss-qmp";
+		reg = <0xc300000 0x400>;
+		interrupts = <GIC_SPI 389 IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&apss_shared 0>;
+
+		#clock-cells = <0>;
+		#power-domain-cells = <1>;
+	};
+
+	qmp_aop: qmp-aop {
+		compatible = "qcom,qmp-mbox";
+		qcom,qmp = <&aoss_qmp>;
+		label = "aop";
+		#mbox-cells = <1>;
+	};
+
 	apcs: syscon@17c0000c {
 		compatible = "syscon";
 		reg = <0x17c0000c 0x4>;
@@ -609,10 +632,132 @@
 		memory-region = <&smem_region>;
 		hwlocks = <&tcsr_mutex 3>;
 	};
+
+	glinkpkt {
+		compatible = "qcom,glinkpkt";
+
+		qcom,glinkpkt-apr-apps2 {
+			qcom,glinkpkt-edge = "adsp";
+			qcom,glinkpkt-ch-name = "apr_apps2";
+			qcom,glinkpkt-dev-name = "apr_apps2";
+		};
+	};
+
+	smp2p-modem {
+		compatible = "qcom,smp2p";
+		qcom,smem = <435>, <428>;
+		interrupts = <GIC_SPI 451 IRQ_TYPE_EDGE_RISING>;
+		qcom,ipc = <&apcs 0 14>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <1>;
+
+		modem_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		modem_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_ipa_1_out: qcom,smp2p-ipa-1-out {
+			qcom,entry-name = "ipa";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		/* ipa - inbound entry from mss */
+		smp2p_ipa_1_in: qcom,smp2p-ipa-1-in {
+			qcom,entry-name = "ipa";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_wlan_1_in: qcom,smp2p-wlan-1-in {
+			qcom,entry-name = "wlan";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	qcom_smp2p_adsp: smp2p-adsp {
+		compatible = "qcom,smp2p";
+		qcom,smem = <443>, <429>;
+		interrupts = <GIC_SPI 172 IRQ_TYPE_EDGE_RISING>;
+		qcom,ipc = <&apcs 0 26>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <2>;
+
+		adsp_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		adsp_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		sleepstate_smp2p_out: sleepstate-out {
+			qcom,entry-name = "sleepstate";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		sleepstate_smp2p_in: qcom,sleepstate-in {
+			qcom,entry-name = "sleepstate_see";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg2_out: qcom,smp2p-rdbg2-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg2_in: qcom,smp2p-rdbg2-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	smp2p-cdsp {
+		compatible = "qcom,smp2p";
+		qcom,smem = <94>, <432>;
+		interrupts = <GIC_SPI 576 IRQ_TYPE_EDGE_RISING>;
+		qcom,ipc = <&apcs 0 6>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <5>;
+
+		cdsp_smp2p_out: master-kernel {
+				qcom,entry-name = "master-kernel";
+				#qcom,smem-state-cells = <1>;
+		};
+
+		cdsp_smp2p_in: slave-kernel {
+				qcom,entry-name = "slave-kernel";
+				interrupt-controller;
+				#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg5_out: qcom,smp2p-rdbg5-out {
+				qcom,entry-name = "rdbg";
+				#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg5_in: qcom,smp2p-rdbg5-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
 };
 
 #include "sm6150-regulator.dtsi"
 #include "sm6150-pinctrl.dtsi"
+#include "msm-rdbg.dtsi"
 
 &tlmm {
 	status = "okay";
