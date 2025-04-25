@@ -13,11 +13,16 @@ description: |
   Qualcomm global clock control module provides the clocks, resets and power
   domains on QCS615.
 
-  See also: include/dt-bindings/clock/qcom,qcs615-gcc.h
+  See also:
+    include/dt-bindings/clock/qcom,gcc-sm6150.h
+    include/dt-bindings/clock/qcom,qcs615-gcc.h
 
 properties:
   compatible:
-    const: qcom,qcs615-gcc
+    enum:
+      - qcom,qcs615-gcc
+      - qcom,sa6155-gcc
+      - qcom,sm6150-gcc
 
   clocks:
     items:

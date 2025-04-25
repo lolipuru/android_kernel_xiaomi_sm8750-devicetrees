@@ -14,11 +14,16 @@ description: |
   Qualcomm display clock control module provides the clocks, resets and power
   domains on QCS615
 
-  See also: include/dt-bindings/clock/qcom,qcs615-dispcc.h
+  See also:
+    include/dt-bindings/clock/qcom,dispcc-sm6150.h
+    include/dt-bindings/clock/qcom,qcs615-dispcc.h
 
 properties:
   compatible:
-    const: qcom,qcs615-dispcc
+    enum:
+      - qcom,qcs615-dispcc
+      - qcom,sa6155-dispcc
+      - qcom,sm6150-dispcc
 
   reg:
     maxItems: 1

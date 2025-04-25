@@ -22,6 +22,7 @@ properties:
       - qcom,sdx75-debugcc
       - qcom,sdxbaagha-debugcc
       - qcom,sm4450-debugcc
+      - qcom,sm6150-debugcc
       - qcom,monaco-debugcc
       - qcom,tuna-debugcc
       - qcom,kera-debugcc
