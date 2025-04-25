@@ -374,6 +374,22 @@
 	status = "disabled";
 };
 
+&usb0 {
+	qcom,interconnect-values-nom = /* NOMINAL Votes */
+						<1000000 2500000>,
+						<0 2400>,
+						<0 40000>;
+	qcom,interconnect-values-svs = /* SVS Votes */
+						<240000 700000>,
+						<0 2400>,
+						<0 40000>;
+	extcon = <&pm6150_pdphy>, <&eud>;
+
+	#io-channel-cells = <1>;
+	io-channels= <&pm6150_charger PSY_IIO_USB_REAL_TYPE>;
+	io-channel-names = "chg_type";
+};
+
 &sdhc_1 {
 	vdd-supply = <&pm6150l_l11>;
 	qcom,vdd-voltage-level = <2950000 2950000>;
