@@ -2618,7 +2618,16 @@
 		qcom,pipe-attr-ee;
 	};
 
+	qcom,test-dbl-tuivm {
+		compatible = "qcom,gh-dbl";
+		qcom,label = <0x4>;
+	};
 
+	qcom,test-msgq-tuivm {
+		compatible = "qcom,gh-msgq-test";
+		gunyah-label = <0x4>;
+		qcom,primary;
+	};
 
 	thermal_zones: thermal-zones {
 	};
