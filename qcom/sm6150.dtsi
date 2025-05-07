@@ -1628,6 +1628,11 @@
 		reg = <0xc264000 0x1000>;
 	};
 
+	tcsr: syscon@1fc0000 {
+		compatible = "syscon";
+		reg = <0x1fc0000 0x30000>;
+	};
+
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
@@ -2156,5 +2161,6 @@
 &firmware {
 	qcom_scm {
 		compatible = "qcom,scm";
+		qcom,dload-mode = <&tcsr 0x13000>;
 	};
 };
