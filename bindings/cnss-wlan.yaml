@@ -1,4 +1,4 @@
-# Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 %YAML 1.2
 ---
@@ -261,6 +261,23 @@ properties:
      description: represent chip specific configurations
      enum:
        -supported-ids #U32 array to decide which device ids are supported by sub node.
+
+   nvmem-cells:
+     description: |
+       Contains a list of phandles (references) to the NVMEM cells.
+       Each entry points to a specific memory cell defined elsewhere
+       in the DTS file.
+
+   nvmem-cell-names:
+     description: |
+       Provides a list of names corresponding to the NVMEM cells
+       referenced in nvmem-cells. These names are used to identify
+       the cells in the driver code.
+
+   wcal-pbs-supply:
+     description: |
+       PBS regulator on which clients can vote to trigger the PBS
+       sequence.
 
 required:
   - compatible
