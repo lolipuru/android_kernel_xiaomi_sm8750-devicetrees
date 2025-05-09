@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
 #include "waipio-vm.dtsi"
@@ -24,6 +24,28 @@
 		vdevices {
 			gvsock-message-queue-pair {
 				status = "disabled";
+			};
+
+			ddump-shm {
+				vdevice-type = "shm-doorbell";
+				generate = "/hypervisor/ddump-shm";
+				push-compatible = "qcom,ddump-gunyah-gen";
+				peer-default;
+				memory {
+					qcom,label = <0x7>;
+					allocate-base;
+				};
+			};
+
+			gunyah-panic-notifier-shm {
+				vdevice-type = "shm-doorbell";
+				generate = "/hypervisor/gpn-shm";
+				push-compatible = "qcom,gunyah-panic-gen";
+				peer-default;
+				memory {
+					qcom,label = <0x9>;
+					allocate-base;
+				};
 			};
 		};
 	};
