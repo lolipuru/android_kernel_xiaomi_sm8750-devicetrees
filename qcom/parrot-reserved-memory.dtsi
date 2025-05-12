@@ -8,9 +8,9 @@
 	#size-cells = <2>;
 	ranges;
 
-	hyp_mem: hyp_region@80000000 {
+	hyp_mem: hyp_region@0x83600000 {
 		no-map;
-		reg = <0x0 0x80000000 0x0 0x600000>;
+		reg = <0x0 0x83600000 0x0 0xe00000>;
 	};
 
 	xbl_dtlog_mem: xbl_dtlog_region@80600000 {
