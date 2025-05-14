@@ -71,7 +71,7 @@
 
 	pvm_fw_mem: pvm_fw_region@80c01000 {
 		no-map;
-		reg = <0x0 0x80c01000 0x0 0x100000>;
+		reg = <0x0 0x80c01000 0x0 0x200000>;
 	};
 
 	wlan_fw_mem: wlan_fw_region@82a00000 {
