@@ -185,6 +185,10 @@
 			" {class: wlan_pdc, ss: rf, res: S7G0.m, enable: 1}",
 			" {class: wlan_pdc, ss: rf, res: S7G0.v, enable: 1}";
 
+		qcom,pdc_mode_vote_table =
+			" {class: wlan_pdc, ss: rf, res: L3K1.m, enable: 1}",
+			" {class: wlan_pdc, ss: rf, res: L3K1.m, dwnval: 2}";
+
 		/* cpu mask used for wlan tx rx interrupt affinity
 		 * <cpumask_for_rx_interrupts cpumask_for_tx_comp_interrupts>
 		 */

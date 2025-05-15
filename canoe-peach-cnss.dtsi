@@ -188,6 +188,10 @@
 			"VDDA_PCIE_0P9", "S7F0",
 			"VDDA_PCIE_1P2", "S7F0";
 
+		qcom,pdc_mode_vote_table =
+			" {class: wlan_pdc, ss: rf, res: L3K1.m, enable: 1}",
+			" {class: wlan_pdc, ss: rf, res: L3K1.m, dwnval: 2}";
+
 		/* cpu mask used for wlan tx rx interrupt affinity
 		 * <cpumask_for_rx_interrupts cpumask_for_tx_comp_interrupts>
 		 */
