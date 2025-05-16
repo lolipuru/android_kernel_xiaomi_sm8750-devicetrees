@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2023-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2023-2025 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #include <dt-bindings/gpio/gpio.h>
@@ -206,7 +206,14 @@
 	resets = <&gcc GCC_SDCC2_BCR>;
 	reset-names = "core_reset";
 
+	/*
+	 * By default, the Sun reference platforms use Level Shifter
+	 * devices with its Feedback Clock signal connects to the MSM.
+	 * Without the external feedback clock, the HS50 mode works at
+	 * reduced frequency at 37.5MHz.
+	 */
 	qcom,uses_level_shifter;
+	qcom,external-fb-clk;
 };
 
 &eusb2_phy0 {
