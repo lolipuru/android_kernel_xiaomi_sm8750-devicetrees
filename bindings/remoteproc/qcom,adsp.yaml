@@ -81,6 +81,7 @@ properties:
       - qcom,tuna-wpss-pas
       - qcom,kera-wpss-pas
       - qcom,sm6150-adsp-pas
+      - qcom,sm6150-cdsp-pas
 
   reg:
     maxItems: 1
