@@ -119,6 +119,28 @@ properties:
               - qcom,qrd
           - const: qcom,ravelinp
 
+      - description: Qualcomm Technologies, Inc. MONTAGUE
+        items:
+          - enum:
+              - qcom,montague-rumi
+              - qcom,rumi
+              - qcom,montague-idp
+              - qcom,idp
+              - qcom,montague-qrd
+              - qcom,qrd
+          - const: qcom,montague
+
+      - description: Qualcomm Technologies, Inc. MONTAGUEP
+        items:
+          - enum:
+              - qcom,montaguep-rumi
+              - qcom,rumi
+              - qcom,montaguep-idp
+              - qcom,idp
+              - qcom,montaguep-qrd
+              - qcom,qrd
+          - const: qcom,montaguep
+
       - description: Qualcomm Technologies, Inc. TUNA
         items:
           - enum:
