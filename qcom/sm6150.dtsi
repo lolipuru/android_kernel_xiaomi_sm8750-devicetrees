@@ -514,6 +514,8 @@
 		interrupt-controller;
 	};
 
+	msm_gpu: qcom,kgsl-3d0@5000000 { };
+
 	timer {
 		compatible = "arm,armv8-timer";
 		interrupts = <1 1 0xf08>,
@@ -1280,6 +1282,21 @@
 						0x2000 3
 						0x4400 2>;
 			};
+
+			qcom,msm_cdsprm_rpmsg {
+				compatible = "qcom,msm-cdsprm-rpmsg";
+				qcom,glink-channels = "cdsprmglink-apps-dsp";
+				qcom,intents = <0x20 12>;
+				msm_cdsp_rm: qcom,msm_cdsp_rm {
+					compatible = "qcom,msm-cdsp-rm";
+					qcom,qos-latency-us = <44>;
+					qcom,qos-maxhold-ms = <20>;
+					qcom,compute-cx-limit-en;
+					qcom,compute-priority-mode = <2>;
+					#cooling-cells = <2>;
+				};
+			};
+
 		};
 
 	};
