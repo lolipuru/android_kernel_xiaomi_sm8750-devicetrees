@@ -82,6 +82,7 @@ properties:
       - qcom,kera-wpss-pas
       - qcom,sm6150-adsp-pas
       - qcom,sm6150-cdsp-pas
+      - qcom,sm6150-modem-pas
 
   reg:
     maxItems: 1
