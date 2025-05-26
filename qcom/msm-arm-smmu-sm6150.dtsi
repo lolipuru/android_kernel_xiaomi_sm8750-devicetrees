@@ -7,7 +7,7 @@
 
 &soc {
 	kgsl_smmu: kgsl-smmu@50a0000 {
-		compatible = "qcom,qsmmu-v500";
+		compatible = "qcom,qsmmu-v500", "qcom,adreno-smmu";
 		status = "okay";
 		reg = <0x50a0000 0x10000>,
 			<0x50c2000 0x20>;
