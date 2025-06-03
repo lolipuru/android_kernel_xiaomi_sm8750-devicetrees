@@ -2051,9 +2051,19 @@
 		qcom,msgq-names = "trusted_vm";
 	};
 
-	trust_ui_vm: qcom,trust_ui_vm@e55fc000 {
-		reg = <0xe55fc000 0x104000>;
+	trust_ui_vm_vblk0_ring: trust_ui_vm_vblk0_ring {
+		size = <0x4000>;
+		gunyah-label = <0x11>;
+	};
+
+	trust_ui_vm_swiotlb: trust_ui_vm_swiotlb {
+		size = <0x100000>;
+		gunyah-label = <0x12>;
+	};
+
+	trust_ui_vm: qcom,trust_ui_vm {
 		vm_name = "trustedvm";
+		shared-buffers-size = <0x104000>;
 		shared-buffers = <&trust_ui_vm_vblk0_ring &trust_ui_vm_swiotlb>;
 	};
 
@@ -2068,7 +2078,7 @@
 		qcom,vmid = <45>;
 		qcom,guest-cpus = "5-6";
 		qcom,firmware-name = "trustedvm";
-		memory-region = <&trust_ui_vm_mem>;
+		memory-region = <&trust_ui_vm_mem &vm_comm_mem>;
 		virtio-backends = <&trust_ui_vm_virt_be0>;
 	};
 
@@ -2082,12 +2092,11 @@
 		ext-label = <0x7>;
 	};
 
-	qrtr-gunyah {
+	trust_ui_vm_qrtr: qcom,qrtr-gunyah-tuivm {
 		compatible = "qcom,qrtr-gunyah";
 		qcom,master;
 		gunyah-label = <3>;
 		peer-name = <2>;
-		shared-buffer = <&trust_ui_vm_qrtr>;
 	};
 
 	qcom,mpm2-sleep-counter@c221000 {
