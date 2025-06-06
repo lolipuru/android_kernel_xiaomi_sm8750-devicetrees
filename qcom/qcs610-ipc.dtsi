@@ -10,3 +10,7 @@
 	compatible = "qcom,qcs610-iot", "qcom,qcs610", "qcom,iot";
 	qcom,board-id = <32 1>;
 };
+
+&pm6150_charger {
+	qcom,batteryless-platform;
+};

@@ -57,6 +57,9 @@
 	qcom,vccq2-parent-supply = <&S1B>;
 	qcom,vccq2-parent-max-microamp = <210000>;
 
+	qcom,vccq-proxy-vote-supply = <&L1D>;
+	qcom,vccq-proxy-vote-max-microamp = <750000>;
+
 	clock-names =
 		"core_clk",
 		"bus_aggr_clk",
