@@ -22,6 +22,12 @@
 				0x0 0xae8f000 0x0 0xae8f000 0x0 0x1000 0x0>;
 
 		gic-irq-ranges = <325 325>; /* PVM->SVM IRQ transfer */
+
+		vcpus {
+			affinity = "proxy";
+			affinity-map = <0x0 0x0>;
+		};
+
 		vdevices {
 			gvsock-message-queue-pair {
 				status = "disabled";
