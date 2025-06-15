@@ -437,6 +437,12 @@
 			size = <0x0 0x1400000>;
 		};
 
+		kinfo_mem: debug_kinfo_region {
+			alloc-ranges = <0x0 0x00000000 0xffffffff 0xffffffff>;
+			size = <0x0 0x1000>;
+			no-map;
+		};
+
 		cdsp_sec_mem: cdsp_sec_regions@9f800000 {
 			no-map;
 			reg = <0x0 0x9f800000 0x0 0x1e00000>;
@@ -1669,9 +1675,22 @@
 		qcom,vmid = <3>;
 	};
 
+	google,debug-kinfo {
+		compatible = "google,debug-kinfo";
+		memory-region = <&kinfo_mem>;
+	};
+
 	mini_dump_mode {
 		compatible = "qcom,minidump";
 		status = "ok";
+	};
+
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
 	};
 
 	va_mini_dump {
