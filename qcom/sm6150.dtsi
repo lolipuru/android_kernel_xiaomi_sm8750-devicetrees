@@ -1292,13 +1292,11 @@
 		compatible = "qcom,ufshc";
 		reg = <0x1d84000 0x3000>,
 			<0x1d90000 0x8000>;
-		reg-names = "ufs_mem", "ufs_ice";
+		reg-names = "ufs_mem", "ice";
 		interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
 		phys = <&ufsphy_mem>;
 		phy-names = "ufsphy";
 		#reset-cells = <1>;
-
-		qcom,ice-use-hwkm;
 
 		lanes-per-direction = <1>;
 		limit-phy-submode = <0>;
@@ -1419,7 +1417,7 @@
 	sdhc_1: sdhci@7c4000 {
 		compatible = "qcom,sdhci-msm-v5";
 		reg = <0x7c4000 0x1000>, <0x7c5000 0x1000>, <0x7C8000 0x8000>;
-		reg-names = "hc", "cqhci", "cqhci_ice";
+		reg-names = "hc", "cqhci", "ice";
 
 		interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH>,
 				<GIC_SPI 644 IRQ_TYPE_LEVEL_HIGH>;
@@ -1464,7 +1462,6 @@
 		nvmem-cells = <&boot_config>;
 		nvmem-cell-names = "boot_conf";
 		boot_device_type = <0x0>;
-		qcom,ice-use-hwkm;
 
 		cap-mmc-hw-reset;
 
