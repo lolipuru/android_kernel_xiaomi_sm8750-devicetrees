@@ -277,6 +277,8 @@
 	};
 
 	idle-states {
+		entry-method = "psci";
+
 		SILVER_OFF: silver-c3 {  /* C3 */
 			compatible = "arm,idle-state";
 			idle-state-name = "pc";
