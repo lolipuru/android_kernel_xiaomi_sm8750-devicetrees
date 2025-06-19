@@ -68,13 +68,13 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_0: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
 
 				L3_0: l3-cache {
-				      compatible = "arm,arch-cache";
+				      compatible = "cache";
 				      cache-size = <0x100000>;
 				      cache-level = <3>;
 				};
@@ -96,7 +96,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_100: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -119,7 +119,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_200: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -141,7 +141,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_300: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -163,7 +163,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_400: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -185,7 +185,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_500: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x10000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -207,7 +207,7 @@
 			qcom,freq-domain = <&cpufreq_hw 1 2>;
 			#cooling-cells = <2>;
 			L2_600: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x40000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
@@ -229,7 +229,7 @@
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 1 2>;
 			L2_700: l2-cache {
-			      compatible = "arm,arch-cache";
+			      compatible = "cache";
 			      cache-size = <0x40000>;
 			      cache-level = <2>;
 			      next-level-cache = <&L3_0>;
