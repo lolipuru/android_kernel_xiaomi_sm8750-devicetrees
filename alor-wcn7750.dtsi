@@ -143,7 +143,16 @@
 		wcn-hw-version = "wcn7750";
 		qcom,wlan-msa-fixed-region = <&wlan_msa_mem>;
 
-		//TODO REGULATOR VOTING
+		vdd-cx-mx-supply = <&S2D>;
+		qcom,vdd-cx-mx-config = <864000 1100000 0 0 0>;
+		vdd-1.8-xo-supply = <&S4D>;
+		qcom,vdd-1.8-xo-config = <1840000 2100000 0 0 0>;
+		vdd-1.3-rfa-supply = <&S4F>;
+		qcom,vdd-1.3-rfa-config = <1256000 1400000 0 0 0>;
+		vdd-1.8-io-supply = <&L2D>;
+		qcom,vdd-1.8-io-config = <1800000 1800000 0 0 0>;
+		vdd-1.2-io-supply = <&L3D>;
+		qcom,vdd-1.2-io-config = <1200000 1200000 0 0 0>;
 
 		qcom,smem-states = <&smp2p_wlan_1_out 0>,
 				   <&smp2p_wlan_2_out 0>,
@@ -156,7 +165,7 @@
 		qcom,vreg_ol_cpr ="s2d";
 
 		interconnects =
-		<&pcie_noc MASTER_PCIE_0 &pcie_noc SLAVE_ANOC_PCIE_GEM_NOC>,
+		<&pcie_anoc MASTER_PCIE_0 &pcie_anoc SLAVE_ANOC_PCIE_GEM_NOC>,
 		<&gem_noc MASTER_ANOC_PCIE_GEM_NOC &mc_virt SLAVE_EBI1>;
 		interconnect-names = "pcie_to_memnoc", "memnoc_to_ddr";
 
