@@ -18,7 +18,7 @@
 		#size-cells=<1>;
 		ranges = <0xb0000000 0xb0000000 0x10000>;
 
-		power-domains = <&scmi_power 10>, <&scmi_power 11>;
+		power-domains = <&scmi_power 5>, <&scmi_power 11>;
 		power-domain-names = "wlan_ldo", "wlan_gpio";
 
 		chip_cfg@0 {
