@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
 #include <dt-bindings/clock/qcom,rpmh.h>
@@ -545,24 +545,22 @@
 	vbat {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
+		thermal-sensors = <&pm6150_bcl 2>;
 
 		trips {
 			vbat_lvl0: vbat-lvl0 {
-				thermal-sensors = <&pm6150_bcl 2>;
 				temperature = <3000>;
 				hysteresis = <200>;
 				type = "passive";
 			};
 
 			vbat_lvl1:vbat-lvl1 {
-				thermal-sensors = <&pm6150_bcl 3>;
 				temperature = <2800>;
 				hysteresis = <200>;
 				type = "passive";
 			};
 
 			vbat_lvl2:vbat-lvl2 {
-				thermal-sensors = <&pm6150_bcl 4>;
 				temperature = <2600>;
 				hysteresis = <200>;
 				type = "passive";

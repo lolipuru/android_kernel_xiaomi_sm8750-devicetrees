@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
 #include <dt-bindings/interconnect/qcom,icc.h>
@@ -55,6 +55,24 @@
 		serial0 = &qupv3_se3_2uart;
 		hsuart0 = &qupv3_se11_4uart;
 	};
+
+	qcom,gunyah-panic-notifier {
+		compatible = "qcom,gh-panic-notifier";
+		qcom,primary-vm;
+		gunyah-label = <9>;
+		peer-name = <2>;
+		memory-region = <&vm_comm_mem>;
+		shared-buffer-size = <0x1000>;
+	};
+
+	dmesg-dump {
+		compatible = "qcom,dmesg-dump";
+			qcom,primary-vm;
+			gunyah-label = <7>;
+			peer-name = <2>;
+			 memory-region = <&vm_comm_mem>;
+			 shared-buffer-size = <0x1000>;
+	 };
 
 	mmio_sram: mmio-sram@17D09100 {
 		#address-cells = <2>;
