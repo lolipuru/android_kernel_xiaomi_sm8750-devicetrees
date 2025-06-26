@@ -475,6 +475,7 @@ _platform_map = {
             {"name": "parrot-sg.dtb"},
             {"name": "parrotp-sg.dtb"},
             {"name": "parrot-4gb.dtb"},
+            {"name": "parrot-lite.dtb"},
             {"name": "ravelin.dtb"},
             {"name": "ravelinp.dtb"},
             {"name": "ravelin-4gb.dtb"},
