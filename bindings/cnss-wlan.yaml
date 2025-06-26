@@ -169,7 +169,7 @@ properties:
    qcom,mhi:
      description: phandle to indicate the device which needs MHI support.
 
-   qcom,cap-tsf-gpio:
+   qcom,wlan-tsf-gpio:
      description: |
        WLAN_TSF_CAPTURED GPIO signal specified by the chip
        specifications, should be drived depending on products.
@@ -305,7 +305,7 @@ examples:
         qcom,wlan-rc-num = <0>;
         qcom,wlan-smmu-iova-address = <0 0x10000000>;
         qcom,mhi = <&mhi_wlan>;
-        qcom,cap-tsf-gpio = <&tlmm 126 1>;
+        qcom,wlan-tsf-gpio = <&tlmm 126 1>;
     };
 
     wlan: qcom,cnss-qca6490@b0000000 {
