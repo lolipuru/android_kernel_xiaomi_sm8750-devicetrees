@@ -258,6 +258,8 @@ _platform_map = {
             {"name": "ravelin-vm-idp-wcn3988.dtb"},
             {"name": "ravelin-vm-idp-wcn3950-amoled-rcm.dtb"},
             {"name": "ravelin-vm-qrd.dtb"},
+            {"name": "montague-vm-hsp.dtb"},
+            {"name": "montague-vm-moselle.dtb"},
         ],
     },
     "sun-tuivm": {
@@ -481,6 +483,10 @@ _platform_map = {
             {"name": "ravelinp-4gb.dtb"},
             {"name": "ravelin-sg.dtb"},
             {"name": "ravelinp-sg.dtb"},
+            {"name": "montague.dtb"},
+            {"name": "montaguep.dtb"},
+            {"name": "montague-4gb.dtb"},
+            {"name": "montaguep-4gb.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -516,6 +522,15 @@ _platform_map = {
             {"name": "ravelin-qrd-overlay.dtbo"},
             {"name": "ravelin-idp-wcn3988-4gb-overlay.dtbo"},
             {"name": "ravelin-qrd-4gb-overlay.dtbo"},
+            {"name": "montague-rumi-overlay.dtbo"},
+            {"name": "montague-hsp-overlay.dtbo"},
+            {"name": "montague-rcm-overlay.dtbo"},
+            {"name": "montague-wsa-overlay.dtbo"},
+            {"name": "montague-wsd-overlay.dtbo"},
+            {"name": "montague-idp-qps615-overlay.dtbo"},
+            {"name": "montague-adrastea-overlay.dtbo"},
+            {"name": "montague-apache-overlay.dtbo"},
+            {"name": "montague-moselle-overlay.dtbo"},
         ],
     },
 }
