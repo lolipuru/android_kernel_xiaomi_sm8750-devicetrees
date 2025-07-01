@@ -415,6 +415,7 @@
 			interrupts-extended = <&intc GIC_SPI 356 IRQ_TYPE_LEVEL_HIGH>,
 				<&tlmm 13 IRQ_TYPE_LEVEL_HIGH>;
 			qcom,wakeup-byte = <0xFD>;
+			qcom,suspend-ignore-children;
 			status = "disabled";
 		};
 	};
