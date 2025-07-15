@@ -2370,6 +2370,8 @@
 #include "sm6150-usb.dtsi"
 #include "sm6150-dma-heaps.dtsi"
 #include "sm6150-walt.dtsi"
+#include "sm6150-coresight.dtsi"
+#include "sm6150-debug.dtsi"
 
 &tlmm {
 	status = "okay";
