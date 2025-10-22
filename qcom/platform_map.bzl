@@ -211,6 +211,35 @@ _platform_map = {
                 "apq": True,
             },
         ],
+    "dada": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "sun.dtb"},
+            {
+                "name": "sunp.dtb",
+                "apq": True,
+            },
+            {
+                "name": "sunp-v2.dtb",
+                "apq": True,
+            },
+            {"name": "sun-v2.dtb"},
+            {"name": "sun-tp.dtb"},
+            {"name": "sun-tp-v2.dtb"},
+            {
+                "name": "sunp-tp.dtb",
+                "apq": True,
+            },
+            {
+                "name": "sunp-tp-v2.dtb",
+                "apq": True,
+            },
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "dada-sm8750-overlay.dtbo"},
+        ],
+    },
         "dtbo_list": [
             {
                 "name": "kera-rumi-overlay.dtbo",

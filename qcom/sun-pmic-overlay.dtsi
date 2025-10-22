@@ -341,7 +341,7 @@
 };
 
 &thermal_zones {
-	sys-therm-0 {
+	xo-therm {
 		polling-delay-passive = <5000>;
 		polling-delay = <0>;
 		thermal-sensors = <&pmk8550_vadc PMK8550_ADC5_GEN3_AMUX_THM1_XO_THERM_100K_PU>;

@@ -39,6 +39,7 @@ SUN_BOARDS += \
 		sun-qrd-sku2-v8-overlay.dtbo \
 		sun-rcm-kiwi-overlay.dtbo \
 		sun-rcm-kiwi-v8-overlay.dtbo \
+		dada-sm8750-overlay.dtbo \
 		sun-rcm-overlay.dtbo \
 		sun-rcm-v8-overlay.dtbo \
 		sun-atp-overlay.dtbo \

@@ -6,6 +6,7 @@
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/clock/qcom,gcc-sun.h>
+#include <dt-bindings/phy/qcom,usb3-3nm-qmp-combo.h>
 
 #include "sun-pmic-overlay.dtsi"
 #include "sun-thermal-overlay.dtsi"
@@ -264,7 +265,7 @@
 };
 
 &sdhc_2 {
-	status = "ok";
+	status = "disabled";
 	vdd-supply = <&pm_humu_l9>;
 	qcom,vdd-voltage-level = <2950000 2960000>;
 	qcom,vdd-current-level = <0 800000>;
